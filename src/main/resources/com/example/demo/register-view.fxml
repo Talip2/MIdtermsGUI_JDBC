@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="pnLogout" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.loginController">
+   <children>
+      <VBox fx:id="vbSignIn" prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label text="Name:" />
+                  <TextField fx:id="txtName" />
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label text="Email:" />
+                  <TextField fx:id="txtEmail" />
+                  <Button mnemonicParsing="false" onAction="#CreateUser" text="Submit" />
+                  <Button fx:id="Return" mnemonicParsing="false" onAction="#goBack" text="Return" />
+               </children>
+            </HBox>
+         </children></VBox>
+      
+   </children>
+</AnchorPane>
