@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import JDBCapr9.CreateTable;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -16,6 +17,7 @@ public class Login extends Application {
         stage.setTitle("Java Database Connectivity!");
         stage.setScene(scene);
         stage.show();
+        CreateTable.create();
     }
 
     public static void main(String[] args) {

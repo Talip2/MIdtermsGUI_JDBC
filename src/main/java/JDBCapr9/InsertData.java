@@ -28,12 +28,27 @@ public class InsertData {
     }
 
 
-    public static void insert(String name, String email){
+    public static void insertUser(String name, String password){
         try (Connection c = MySQLConnection.getConnection();
-             PreparedStatement statement = c.prepareStatement("INSERT INTO users (name, email) VALUES (?,?)")){
+             PreparedStatement statement = c.prepareStatement("INSERT INTO users (name, password) VALUES (?,?)")){
                 statement.setString(1, name);
-                statement.setString(2, email);
+                statement.setString(2, password);
                 int rows = statement.executeUpdate();
+            System.out.println("Inserted rows: " + rows);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    public static void insertSpending(int amount, String reason, int userID){
+        System.out.println("current user id: " + userID);
+        try (Connection c = MySQLConnection.getConnection();
+             PreparedStatement statement = c.prepareStatement("INSERT INTO spending (amount, reason, userID) VALUES (?,?,?)")){
+            statement.setInt(1, amount);
+            statement.setString(2, reason);
+            statement.setInt(3, userID);
+            int rows = statement.executeUpdate();
             System.out.println("Inserted rows: " + rows);
         } catch (SQLException e) {
             throw new RuntimeException(e);

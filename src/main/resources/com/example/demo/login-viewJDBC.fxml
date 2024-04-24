@@ -5,11 +5,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="pn" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.loginController">
+<AnchorPane id="pn" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.loginController">
     <children>
         <VBox fx:id="vbSignIn" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="400.0">
             <children>
-                <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="400.0">
+                <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
                     <top>
                         <Label alignment="BOTTOM_CENTER" text="Welcome" BorderPane.alignment="CENTER">
                             <font>
@@ -20,13 +20,6 @@
                             </BorderPane.margin>
                         </Label>
                     </top>
-                    <bottom>
-                        <Button fx:id="btnSignIn" alignment="TOP_CENTER" mnemonicParsing="false" onAction="#SignIn" text="Sign In" BorderPane.alignment="CENTER">
-                            <BorderPane.margin>
-                                <Insets bottom="20.0" />
-                            </BorderPane.margin>
-                        </Button>
-                    </bottom>
                     <center>
                         <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="394.0" BorderPane.alignment="CENTER">
                             <children>
@@ -42,7 +35,7 @@
                                 <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="200.0">
                                     <children>
                                         <Label text="Password: " />
-                                        <PasswordField fx:id="txtPassword">
+                                        <PasswordField fx:id="txtPasswordSignIn">
                                             <HBox.margin>
                                                 <Insets />
                                             </HBox.margin></PasswordField>
@@ -65,9 +58,23 @@
                             </children>
                         </VBox>
                     </center>
-               <right>
-                  <Button fx:id="btnCreateUser" mnemonicParsing="false" onAction="#SignUp" text="Register" BorderPane.alignment="CENTER" />
-               </right>
+               <bottom>
+                  <HBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+                     <children>
+                              <Button fx:id="btnSignIn" alignment="TOP_CENTER" mnemonicParsing="false" onAction="#SignIn" text="Sign In">
+                           <HBox.margin>
+                              <Insets left="200.0" />
+                           </HBox.margin></Button>
+                        <Button fx:id="btnCreateUser" mnemonicParsing="false" onAction="#SignUp" text="Register">
+                           <HBox.margin>
+                              <Insets left="25.0" />
+                           </HBox.margin></Button>
+                     </children>
+                     <BorderPane.margin>
+                        <Insets />
+                     </BorderPane.margin>
+                  </HBox>
+               </bottom>
                 </BorderPane>
             </children></VBox>
     </children>

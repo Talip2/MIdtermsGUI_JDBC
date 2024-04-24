@@ -15,12 +15,15 @@
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label text="Email:" />
-                  <TextField fx:id="txtEmail" />
-                  <Button mnemonicParsing="false" onAction="#CreateUser" text="Submit" />
-                  <Button fx:id="Return" mnemonicParsing="false" onAction="#goBack" text="Return" />
+                  <Label text="Password:" />
+                  <PasswordField fx:id="txtPasswordSignUp" />
                </children>
             </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#CreateUser" text="Submit" />
+                  <Button fx:id="Return" mnemonicParsing="false" onAction="#goBack" text="Return" />
+               </children></HBox>
          </children></VBox>
       
    </children>
