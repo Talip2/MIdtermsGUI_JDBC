@@ -26,7 +26,7 @@ public class UpdateData {
     public static void updateSpending(int spendingID, int amount, String reason, int currUID) {
         try (Connection c = MySQLConnection.getConnection();
              PreparedStatement statement = c.prepareStatement("UPDATE spending SET amount=?, reason=? WHERE spendingID=? AND userID=?")) {
-
+            c.setAutoCommit(false);
             statement.setInt(1, amount);
             statement.setString(2, reason);
             statement.setInt(3, spendingID);
@@ -37,6 +37,7 @@ public class UpdateData {
             int rows = statement.executeUpdate();
             System.out.println("Rows updated: " + rows + " user: " + currUID);
 
+            c.commit();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

@@ -31,10 +31,14 @@ public class InsertData {
     public static void insertUser(String name, String password){
         try (Connection c = MySQLConnection.getConnection();
              PreparedStatement statement = c.prepareStatement("INSERT INTO users (name, password) VALUES (?,?)")){
+            c.setAutoCommit(false);
+
                 statement.setString(1, name);
                 statement.setString(2, password);
                 int rows = statement.executeUpdate();
             System.out.println("Inserted rows: " + rows);
+
+            c.commit();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -45,11 +49,15 @@ public class InsertData {
         System.out.println("current user id: " + userID);
         try (Connection c = MySQLConnection.getConnection();
              PreparedStatement statement = c.prepareStatement("INSERT INTO spending (amount, reason, userID) VALUES (?,?,?)")){
+            c.setAutoCommit(false);
+
             statement.setInt(1, amount);
             statement.setString(2, reason);
             statement.setInt(3, userID);
             int rows = statement.executeUpdate();
             System.out.println("Inserted rows: " + rows);
+
+            c.commit();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

@@ -58,7 +58,7 @@ public class dashboardController implements Initializable {
 
         try (Connection c = MySQLConnection.getConnection();
              Statement statement = c.createStatement()) {
-
+            c.setAutoCommit(false);
             String query = "SELECT * FROM spending WHERE userID = " + currUserID;
             ResultSet resultSet = statement.executeQuery(query);
 
@@ -90,6 +90,8 @@ public class dashboardController implements Initializable {
                 list.setAll(tempList);
                 tableSpending.setItems(list);
             });
+
+            c.commit();
 
         } catch (SQLException e) {
             e.printStackTrace();

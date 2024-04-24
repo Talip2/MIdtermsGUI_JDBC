@@ -24,6 +24,7 @@ public class DeletData {
     public static void deleteSpending(int spendingID) {
         try (Connection c = MySQLConnection.getConnection();
              PreparedStatement statement = c.prepareStatement("DELETE FROM spending WHERE spendingID=? RETURNING *")){
+            c.setAutoCommit(false);
 
             statement.setInt(1, spendingID);
             int rows = statement.executeUpdate();
@@ -33,6 +34,8 @@ public class DeletData {
                 System.out.println("Amount: " + res.getString("amount"));
                 System.out.println("Reason: " + res.getString("reason"));
             }
+
+            c.commit();
         }catch (SQLException e){
             e.printStackTrace();
         }

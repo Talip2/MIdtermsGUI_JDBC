@@ -10,6 +10,8 @@ public class ReadData {
     public static boolean scan(String user, String pass) {
         try (Connection c = MySQLConnection.getConnection();
              Statement statement = c.createStatement()){
+            c.setAutoCommit(false);
+
             String query = "SELECT * FROM users";
             ResultSet res = statement.executeQuery(query);
             while (res.next()){
@@ -25,6 +27,7 @@ public class ReadData {
                 }
             }
 
+            c.setAutoCommit(true);
         }catch (SQLException e){
             e.printStackTrace();
         }

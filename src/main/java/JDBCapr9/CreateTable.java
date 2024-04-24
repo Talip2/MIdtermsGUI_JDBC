@@ -8,6 +8,8 @@ public class CreateTable {
     public static void create() {
         try (Connection c = MySQLConnection.getConnection();
              Statement statement = c.createStatement()){
+
+            c.setAutoCommit(false);
             String query = "CREATE TABLE IF NOT EXISTS users (" +
                             "userID INT AUTO_INCREMENT PRIMARY KEY," +
                             "name VARCHAR(50) NOT NULL," +
@@ -22,6 +24,8 @@ public class CreateTable {
             statement.execute(query);
             statement.execute(query1);
             System.out.println("Table created succesfully");
+
+            c.commit();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
